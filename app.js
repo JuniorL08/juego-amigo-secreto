@@ -1,4 +1,3 @@
-// El principal objetivo de este desafío es fortalecer tus habilidades en lógica de programación. Aquí deberás desarrollar la lógica para resolver el problema.
 //Variables globales
 let cantidadDeAmigos = 5;
 let amigos = [];
