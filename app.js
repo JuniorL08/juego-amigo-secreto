@@ -3,7 +3,8 @@
 let cantidadDeAmigos = 5;
 let amigos = [];
 let inputAmigo = document.querySelector("#amigo");
-let indiceDeAmigos= 0;
+let amigosSorteados= [];
+let indiceDeAmigos = 0;
 
 condicionInicial();
 
@@ -13,7 +14,7 @@ function agregarAmigo() {
     let inputNombre = inputAmigo.value;
 
     if (inputAmigo.value == "") {
-        window.alert("Debes introducir un nombre");
+        window.alert("Debes introducir un valor válido");
     } else {
         if (amigos.length === cantidadDeAmigos) {
             validarCantidadDeAmigos();
@@ -25,6 +26,17 @@ function agregarAmigo() {
     }
 }
 
+function actualizarLista() {
+    document.querySelector("#listaAmigos").innerHTML += `<li>${amigos[indiceDeAmigos]}</li>`;
+    indiceDeAmigos++;
+}
+
+function sortearAmigo(){
+    //Genera un numero random para que sea el indice del array de la lista de amigos
+    let indiceRandom = Math.floor(Math.random() * cantidadDeAmigos);
+    asignarTextoElemento("#resultado", `El amigo secreto es: ${amigos[indiceRandom]}`);
+    console.log(indiceRandom);
+}
 function asignarTextoElemento(elemento, texto) {
     let elementoHTML = document.querySelector(elemento);
     elementoHTML.innerHTML = texto;
@@ -33,11 +45,6 @@ function validarCantidadDeAmigos() {
     if (amigos.length === cantidadDeAmigos) {
         asignarTextoElemento(".section-title", `Solo puedes añadir ${cantidadDeAmigos} amigos. Procede a sortear`);
     }
-}
-
-function actualizarLista() {
-    document.querySelector("#listaAmigos").innerHTML += `<li>${amigos[indiceDeAmigos]}</li>`;
-    indiceDeAmigos++;
 }
 function limpiarInput() {
     inputAmigo.value = "";
